@@ -5,7 +5,7 @@
 //  Created by Paulo Correa on 29/09/2024.
 //
 
-import Deeplink
+import protocol Deeplink.DeeplinkProtocol
 import Foundation
 
 @Observable
@@ -15,7 +15,7 @@ public final class PlaceListViewModel: PlaceListViewModelProtocol {
     private var placeFiltered: [Place] = []
     private let repository: SearchRepositoryProtocol
     
-    public init(repository: SearchRepositoryProtocol) {
+    public init(repository: SearchRepositoryProtocol, deeplink: DeeplinkProtocol) {
         self.repository = repository
     }
     
