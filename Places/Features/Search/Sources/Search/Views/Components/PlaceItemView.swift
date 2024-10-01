@@ -21,9 +21,9 @@ struct PlaceItemView: View {
                 .foregroundColor(.primary)
                 .lineLimit(1)
                 .accessibilityLabel("\(Accessibility.placeNameLabel) \(place.name)")
-            Text("\(Text.latitude) \(place.latitude)")
+            Text("\(Texts.latitude) \(place.latitude)")
                 .accessibilityLabel("\(Accessibility.latitudeLabel) \(place.latitude)")
-            Text("\(Text.longitude) \(place.longitude)")
+            Text("\(Texts.longitude) \(place.longitude)")
                 .accessibilityLabel("\(Accessibility.longitudeLabel) \(place.longitude)")
         }
     }
@@ -31,7 +31,7 @@ struct PlaceItemView: View {
 
 // MARK: - Texts and Accessiblity
 extension PlaceItemView {
-    private enum Text {
+    private enum Texts {
         static let latitude = "Latitude:"
         static let longitude = "Longitude:"
     }

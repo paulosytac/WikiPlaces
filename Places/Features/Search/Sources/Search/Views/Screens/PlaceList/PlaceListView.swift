@@ -14,7 +14,7 @@ public struct PlaceListView: View {
     public init() {}
     
     public var body: some View {
-        Group {
+        NavigationStack {
             switch viewModel.state {
             case .loading:
                 showLoading()
@@ -41,8 +41,8 @@ extension PlaceListView {
     
     private func showError(error: String) -> some View {
         VStack(alignment: .center, spacing: 20) {
-            Text(Text.error)
-                .accessibilityLabel("\(Text.error) \(error)")
+            Text(Texts.error)
+                .accessibilityLabel("\(Texts.error) \(error)")
             Button(Texts.retry) {
                 requestPlaces()
             }
@@ -58,11 +58,11 @@ extension PlaceListView {
                     .listRowSeparatorTint(.black)
             }
         }
-        .onEmpty(for: places.isEmpty, with: "\(Text.notFound) \(searchQuery)")
+        .onEmpty(for: places.isEmpty, with: "\(Texts.notFound) \(searchQuery)")
         .searchable(
             text: $searchQuery,
             placement: .automatic,
-            prompt: Text.search
+            prompt: Texts.search
         )
         .textInputAutocapitalization(.never)
         .onChange(of: searchQuery) {
@@ -70,7 +70,7 @@ extension PlaceListView {
         }
         .accessibilityElement(children: .combine)
         .accessibilityHint(Accessibility.listHint)
-        .navigationTitle(Text.navigationTitle)
+        .navigationTitle(Texts.navigationTitle)
     }
 }
 
@@ -86,7 +86,7 @@ extension PlaceListView {
 
 // MARK: - Texts and Accessiblity
 extension PlaceListView {
-    private enum Text {
+    private enum Texts {
         static let navigationTitle = "Places"
         static let error = "Something went wrong"
         static let retry = "Retry"

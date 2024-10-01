@@ -12,7 +12,7 @@ let package = Package(
             targets: ["Search"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/paulosytac/WikiNetwork", .branch("main"))
+        .package(url: "https://github.com/paulosytac/WikiNetwork", branch: "main")
     ],
     targets: [
         .target(

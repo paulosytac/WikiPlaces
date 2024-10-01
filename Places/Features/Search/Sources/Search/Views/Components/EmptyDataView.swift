@@ -22,6 +22,7 @@ struct EmptyDataView: ViewModifier {
                 Spacer()
                 Image(systemName: Texts.emptySearchImage)
                     .accessibilityLabel(Accessibility.emptyImageLabel)
+                    .scaleEffect(3)
                 Text(message)
                     .font(.title)
                     .foregroundColor(Color.gray)
