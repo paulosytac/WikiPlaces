@@ -17,6 +17,6 @@ protocol PlaceListViewModelProtocol {
     var state: PlaceListViewState { get }
     
     func requestPlaces() async
-    func searchPlaces(_ searchQuery: String)
+    func searchPlaces(_ searchQuery: String) async
     func openPlace(_ place: Place) async
 }

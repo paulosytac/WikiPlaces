@@ -34,10 +34,13 @@ public final class PlaceListViewModel: PlaceListViewModelProtocol {
         }
     }
     
-    func searchPlaces(_ searchQuery: String) {
+    @MainActor
+    func searchPlaces(_ searchQuery: String) async {
         if searchQuery.isEmpty {
             placeFiltered = places
         } else {
+            let searchQuery = searchQuery.lowercased()
+            
             placeFiltered = places.filter { place in
                 place.name
                     .lowercased()

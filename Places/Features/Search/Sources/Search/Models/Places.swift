@@ -25,8 +25,8 @@ public struct Place: Codable, Hashable, Identifiable, Sendable {
         longitude = try container.decode(Double.self, forKey: .longitude)
     }
     
-    public init (name: String, latitude: Double, longitude: Double) {
-        self.id = UUID()
+    public init (id: UUID = UUID(), name: String, latitude: Double, longitude: Double) {
+        self.id = id
         self.name = name
         self.latitude = latitude
         self.longitude = longitude

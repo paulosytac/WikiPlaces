@@ -75,7 +75,7 @@ extension PlaceListView {
             )
             .textInputAutocapitalization(.never)
             .onChange(of: searchQuery) {
-                viewModel.searchPlaces(searchQuery)
+                searchPlaces(searchQuery)
             }
             .accessibilityElement(children: .combine)
             .accessibilityHint(Accessibility.listHint)
@@ -104,6 +104,12 @@ extension PlaceListView {
     func requestPlaces() {
         Task {
             await viewModel.requestPlaces()
+        }
+    }
+    
+    func searchPlaces(_ searchQuery: String) {
+        Task {
+            await viewModel.searchPlaces(searchQuery)
         }
     }
     
