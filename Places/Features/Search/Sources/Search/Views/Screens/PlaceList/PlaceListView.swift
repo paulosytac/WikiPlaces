@@ -52,7 +52,7 @@ extension PlaceListView {
     }
     
     private func showList(places: [Place]) -> some View {
-        VStack {
+        VStack(spacing: 0) {
             List {
                 ForEach(places, id: \.self) { place in
                     PlaceItemView(place: place)
@@ -72,15 +72,13 @@ extension PlaceListView {
             .accessibilityElement(children: .combine)
             .accessibilityHint(Accessibility.listHint)
             .navigationTitle(Texts.navigationTitle)
-            Spacer()
             Button("Custom Place") {
                 
             }
             .font(.headline)
             .buttonStyle(.borderedProminent)
             .frame(maxWidth: .infinity)
-            .padding(20)
-            .background(Color.accentColor)
+            .background(Color(UIColor.systemGray6))
         }
     }
 }

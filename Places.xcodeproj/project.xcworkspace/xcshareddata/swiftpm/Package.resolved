@@ -1,6 +1,15 @@
 {
-  "originHash" : "4b8bb7150a8be2355e5783af6de5f7dc7f08fc756f157a828fee694b17dce9df",
+  "originHash" : "8776b1dd286a9e6f1384105446627f8dbed8790f1c11684ae8385525d9449ca2",
   "pins" : [
+    {
+      "identity" : "wikideeplink",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/paulosytac/WikiDeeplink",
+      "state" : {
+        "branch" : "main",
+        "revision" : "c27392f675baf1658e94bbb4ccd38324ea7a7d8e"
+      }
+    },
     {
       "identity" : "wikinetwork",
       "kind" : "remoteSourceControl",
@@ -8,6 +17,15 @@
       "state" : {
         "branch" : "main",
         "revision" : "4b322200aae4c41ef7e3a597351dedc835ddeeef"
+      }
+    },
+    {
+      "identity" : "wikivalidator",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/paulosytac/WikiValidator",
+      "state" : {
+        "branch" : "main",
+        "revision" : "3c3bd4d0160c4ec2a4e6fa0b4f20173407bc8a7a"
       }
     }
   ],

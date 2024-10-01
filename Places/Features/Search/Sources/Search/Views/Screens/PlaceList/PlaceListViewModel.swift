@@ -5,8 +5,8 @@
 //  Created by Paulo Correa on 29/09/2024.
 //
 
+import Deeplink
 import Foundation
-import SwiftData
 
 @Observable
 public final class PlaceListViewModel: PlaceListViewModelProtocol {    
