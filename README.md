@@ -14,26 +14,33 @@ This app was built as an assignment for the Senior iOS position at ABN Amro. The
 ## How to start
 
 1. **Clone the repository:**
+
    ```git clone https://github.com/paulosytac/WikiPlaces```
 
 2. **Open the project file**
+
    Open `Places.xcodeproj` in Xcode.
 
 3. **Resolve dependencies**
+
    If XCode does not resolve dependencies automatically, Run `Resolve Package Versions`.
 
 4. **Build and Run:**
+
    Select the target `Places` and run the app.
    
 ## Usage
 
 1. **Display Places**
+
    The app will request places from API and display a list.
 
 2. **Open Place in Wikipedia**
+
    Simply tap on any item to open the Wikipedia.
 
 3. **Enter Custom Place**
+
    Navigate to the custom location view, enter a name (optional), and coordinates (latitude and longitude), then tap "Open" to view the location in the Wikipedia app.
 
 ## Future Improvements
