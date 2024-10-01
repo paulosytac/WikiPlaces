@@ -52,25 +52,36 @@ extension PlaceListView {
     }
     
     private func showList(places: [Place]) -> some View {
-        List {
-            ForEach(places, id: \.self) { place in
-                PlaceItemView(place: place)
-                    .listRowSeparatorTint(.black)
+        VStack {
+            List {
+                ForEach(places, id: \.self) { place in
+                    PlaceItemView(place: place)
+                        .listRowSeparatorTint(.black)
+                }
             }
+            .onEmpty(for: places.isEmpty, with: "\(Texts.notFound) \(searchQuery)")
+            .searchable(
+                text: $searchQuery,
+                placement: .automatic,
+                prompt: Texts.search
+            )
+            .textInputAutocapitalization(.never)
+            .onChange(of: searchQuery) {
+                viewModel.searchPlaces(searchQuery)
+            }
+            .accessibilityElement(children: .combine)
+            .accessibilityHint(Accessibility.listHint)
+            .navigationTitle(Texts.navigationTitle)
+            Spacer()
+            Button("Custom Place") {
+                
+            }
+            .font(.headline)
+            .buttonStyle(.borderedProminent)
+            .frame(maxWidth: .infinity)
+            .padding(20)
+            .background(Color.accentColor)
         }
-        .onEmpty(for: places.isEmpty, with: "\(Texts.notFound) \(searchQuery)")
-        .searchable(
-            text: $searchQuery,
-            placement: .automatic,
-            prompt: Texts.search
-        )
-        .textInputAutocapitalization(.never)
-        .onChange(of: searchQuery) {
-            viewModel.searchPlaces(searchQuery)
-        }
-        .accessibilityElement(children: .combine)
-        .accessibilityHint(Accessibility.listHint)
-        .navigationTitle(Texts.navigationTitle)
     }
 }
 
@@ -100,8 +111,4 @@ extension PlaceListView {
         static let retryLabel = "Retry searching"
         static let retryValue = "Retry"
     }
-}
-
-#Preview {
-    PlaceListView()
 }
