@@ -1,0 +1,15 @@
+{
+  "originHash" : "4b8bb7150a8be2355e5783af6de5f7dc7f08fc756f157a828fee694b17dce9df",
+  "pins" : [
+    {
+      "identity" : "wikinetwork",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/paulosytac/WikiNetwork",
+      "state" : {
+        "branch" : "main",
+        "revision" : "4b322200aae4c41ef7e3a597351dedc835ddeeef"
+      }
+    }
+  ],
+  "version" : 3
+}

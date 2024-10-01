@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A467D1DD2CAC253000141A7A /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = A467D1DC2CAC253000141A7A /* Network */; };
+		A467D20E2CAC25DB00141A7A /* Search in Frameworks */ = {isa = PBXBuildFile; productRef = A467D20D2CAC25DB00141A7A /* Search */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		A467D1882CAC0F3B00141A7A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -35,16 +40,6 @@
 			path = Places;
 			sourceTree = "<group>";
 		};
-		A467D18A2CAC0F3B00141A7A /* PlacesTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = PlacesTests;
-			sourceTree = "<group>";
-		};
-		A467D1942CAC0F3B00141A7A /* PlacesUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = PlacesUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +47,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A467D20E2CAC25DB00141A7A /* Search in Frameworks */,
+				A467D1DD2CAC253000141A7A /* Network in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,8 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				A467D1782CAC0F3A00141A7A /* Places */,
-				A467D18A2CAC0F3B00141A7A /* PlacesTests */,
-				A467D1942CAC0F3B00141A7A /* PlacesUITests */,
 				A467D1772CAC0F3A00141A7A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,6 +107,8 @@
 			);
 			name = Places;
 			packageProductDependencies = (
+				A467D1DC2CAC253000141A7A /* Network */,
+				A467D20D2CAC25DB00141A7A /* Search */,
 			);
 			productName = Places;
 			productReference = A467D1762CAC0F3A00141A7A /* Places.app */;
@@ -129,9 +126,6 @@
 			);
 			dependencies = (
 				A467D1892CAC0F3B00141A7A /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				A467D18A2CAC0F3B00141A7A /* PlacesTests */,
 			);
 			name = PlacesTests;
 			packageProductDependencies = (
@@ -152,9 +146,6 @@
 			);
 			dependencies = (
 				A467D1932CAC0F3B00141A7A /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				A467D1942CAC0F3B00141A7A /* PlacesUITests */,
 			);
 			name = PlacesUITests;
 			packageProductDependencies = (
@@ -195,6 +186,9 @@
 			);
 			mainGroup = A467D16D2CAC0F3A00141A7A;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A467D1DB2CAC253000141A7A /* XCRemoteSwiftPackageReference "WikiNetwork" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A467D1772CAC0F3A00141A7A /* Products */;
 			projectDirPath = "";
@@ -388,10 +382,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Places/Places.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Places/Resources/Places.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Places/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -402,8 +396,7 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -412,10 +405,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.sytac.Places;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
@@ -425,10 +419,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Places/Places.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Places/Resources/Places.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Places/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -439,8 +433,7 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -449,10 +442,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.sytac.Places;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
@@ -583,6 +577,29 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A467D1DB2CAC253000141A7A /* XCRemoteSwiftPackageReference "WikiNetwork" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/paulosytac/WikiNetwork";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A467D1DC2CAC253000141A7A /* Network */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A467D1DB2CAC253000141A7A /* XCRemoteSwiftPackageReference "WikiNetwork" */;
+			productName = Network;
+		};
+		A467D20D2CAC25DB00141A7A /* Search */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Search;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A467D16E2CAC0F3A00141A7A /* Project object */;
 }
