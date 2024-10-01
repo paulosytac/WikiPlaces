@@ -8,11 +8,11 @@
 import Foundation
 import protocol Network.NetworkResponse
 
-public struct Places: NetworkResponse {
+public struct Places: NetworkResponse, Sendable {
     let places: [Place]
 }
 
-public struct Place: Codable, Hashable, Identifiable {
+public struct Place: Codable, Hashable, Identifiable, Sendable {
     public var id: UUID
     let name: String
     let latitude, longitude: Double
@@ -23,6 +23,13 @@ public struct Place: Codable, Hashable, Identifiable {
         name = try container.decodeIfPresent(String.self, forKey: .name) ?? "Unknown Place"
         latitude = try container.decode(Double.self, forKey: .latitude)
         longitude = try container.decode(Double.self, forKey: .longitude)
+    }
+    
+    public init (name: String, latitude: Double, longitude: Double) {
+        self.id = UUID()
+        self.name = name
+        self.latitude = latitude
+        self.longitude = longitude
     }
 }
 

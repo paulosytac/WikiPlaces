@@ -7,9 +7,16 @@
 
 import Foundation
 
+enum PlaceListViewState: Equatable {
+    case loading
+    case loaded([Place])
+    case error(String)
+}
+
 protocol PlaceListViewModelProtocol {
     var state: PlaceListViewState { get }
     
     func requestPlaces() async
     func searchPlaces(_ searchQuery: String)
+    func openPlace(_ place: Place) async
 }

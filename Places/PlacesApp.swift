@@ -6,7 +6,6 @@
 //
 
 import class Deeplink.Deeplink
-import protocol Deeplink.DeeplinkOpenerProtocol
 import SwiftUI
 import class Search.PlaceListViewModel
 import struct Search.PlaceListView

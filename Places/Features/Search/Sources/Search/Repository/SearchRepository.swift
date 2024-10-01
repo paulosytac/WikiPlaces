@@ -5,17 +5,18 @@
 //  Created by Paulo Correa on 29/09/2024.
 //
 
-import class Network.Network
+import protocol Network.NetworkProtocol
 import struct Network.NetworkRequest
 import Foundation
 
 public final class SearchRepository: SearchRepositoryProtocol {
-    private let network: Network
+    private let network: NetworkProtocol
     
-    public init(network: Network) {
+    public init(network: NetworkProtocol) {
         self.network = network
     }
     
+    @MainActor
     public func requestPlaces() async throws -> [Place] {
         try await network.request(.places()).places
     }

@@ -10,6 +10,7 @@ import SwiftUI
 public struct PlaceListView: View {
     @Environment(PlaceListViewModel.self) private var viewModel
     @State var searchQuery = ""
+    @State private var isShowingCustomPlaceView = false
     
     public init() {}
     
@@ -43,6 +44,7 @@ extension PlaceListView {
         VStack(alignment: .center, spacing: 20) {
             Text(Texts.error)
                 .accessibilityLabel("\(Texts.error) \(error)")
+            
             Button(Texts.retry) {
                 requestPlaces()
             }
@@ -57,6 +59,12 @@ extension PlaceListView {
                 ForEach(places, id: \.self) { place in
                     PlaceItemView(place: place)
                         .listRowSeparatorTint(.black)
+                        .onTapGesture {
+                            openPlace(place)
+                        }
+                        .accessibilityAction {
+                            openPlace(place)
+                        }
                 }
             }
             .onEmpty(for: places.isEmpty, with: "\(Texts.notFound) \(searchQuery)")
@@ -72,13 +80,21 @@ extension PlaceListView {
             .accessibilityElement(children: .combine)
             .accessibilityHint(Accessibility.listHint)
             .navigationTitle(Texts.navigationTitle)
-            Button("Custom Place") {
-                
+
+            Button(Texts.customPlace) {
+                isShowingCustomPlaceView.toggle()
             }
             .font(.headline)
             .buttonStyle(.borderedProminent)
             .frame(maxWidth: .infinity)
             .background(Color(UIColor.systemGray6))
+            .accessibilityLabel(Accessibility.customPlaceLabel)
+            .accessibilityHint(Accessibility.customPlaceHint)
+        }
+        .sheet(isPresented: $isShowingCustomPlaceView) {
+            CustomPlaceView { place in
+                openPlace(place)
+            }
         }
     }
 }
@@ -86,9 +102,14 @@ extension PlaceListView {
 // MARK: - Helpers
 extension PlaceListView {
     func requestPlaces() {
-        let vm = viewModel
         Task {
-            await vm.requestPlaces()
+            await viewModel.requestPlaces()
+        }
+    }
+    
+    func openPlace(_ place: Place) {
+        Task {
+            await viewModel.openPlace(place)
         }
     }
 }
@@ -101,6 +122,7 @@ extension PlaceListView {
         static let retry = "Retry"
         static let notFound = "No places found for"
         static let search = "Search Places"
+        static let customPlace = "Custom Place"
     }
     
     private enum Accessibility {
@@ -108,5 +130,7 @@ extension PlaceListView {
         static let listHint = "Tap to select a place and open wiki page"
         static let retryLabel = "Retry searching"
         static let retryValue = "Retry"
+        static let customPlaceLabel = "Enter a custom place"
+        static let customPlaceHint = "Tap to enter a custom clace page"
     }
 }

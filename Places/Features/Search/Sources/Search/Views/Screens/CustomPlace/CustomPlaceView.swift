@@ -7,35 +7,72 @@
 
 import Foundation
 import SwiftUI
+import struct Validator.PlaceLocationValidator
 
 struct CustomPlaceView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var name: String = ""
     @State private var latitude: String = ""
     @State private var longitude: String = ""
+    @State private var showError: Bool = false
+    @FocusState private var nameFocused: Bool
+    @FocusState private var latitudeFocused: Bool
+    @FocusState private var longitudeFocused: Bool
 
-    var open: (Place) -> Void
+    var onDidEnterPlace: (Place) -> Void
 
     var body: some View {
         NavigationView {
-            Form {
-                Section() {
-                    TextField(Texts.name, text: $name)
-                        .accessibilityLabel(Accessibility.nameLabel)
-                        .accessibilityHint(Accessibility.nameHint)
+            VStack(spacing: 0) {
+                Form {
+                    Section() {
+                        TextField(Texts.name, text: $name)
+                            .focused($nameFocused)
+                            .onSubmit {
+                                latitudeFocused = true
+                            }
+                            .submitLabel(.next)
+                            .accessibilityLabel(Accessibility.nameLabel)
+                            .accessibilityHint(Accessibility.nameHint)
+                        
+                        TextField(Texts.latitude, text: $latitude)
+                            .focused($latitudeFocused)
+                            .keyboardType(.decimalPad)
+                            .accessibilityLabel(Accessibility.nameLabel)
+                            .accessibilityHint(Accessibility.nameHint)
 
+                        TextField(Texts.longitude, text: $longitude)
+                            .focused($longitudeFocused)
+                            .keyboardType(.decimalPad)
+                            .accessibilityLabel(Accessibility.nameLabel)
+                            .accessibilityHint(Accessibility.nameHint)
+                    }
                 }
-                Spacer()
-                Button(Texts.openWiki) {
-                    
+                .toolbar {
+                  ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button(action: {
+                        nameFocused = false
+                        latitudeFocused = false
+                        longitudeFocused = false
+                    }) {
+                        Text(Texts.done)
+                            .accessibilityLabel(Accessibility.doneLabel)
+                            .accessibilityHint(Accessibility.doneHint)
+                    }
+                  }
+                }
+
+                Button(action: openPlace) {
+                    Text(Texts.openWiki)
                 }
                 .font(.headline)
                 .buttonStyle(.borderedProminent)
                 .frame(maxWidth: .infinity)
-                .padding(20)
-                .background(Color.accentColor)
+                .background(Color(UIColor.systemGray6))
                 .accessibilityLabel(Accessibility.openWikiLabel)
                 .accessibilityHint(Accessibility.openWikiHint)
+                .disabled(name.isEmpty || latitude.isEmpty || longitude.isEmpty)
             }
             .navigationTitle(Texts.navigationTitle)
             .accessibilityElement(children: .contain)
@@ -46,6 +83,25 @@ struct CustomPlaceView: View {
                 .accessibilityLabel(Accessibility.cancelLabel)
                 .accessibilityHint(Accessibility.cancelHint)
             })
+        }
+        .alert(isPresented: $showError) {
+            Alert(
+                title: Text(Texts.errorTitle),
+                message: Text(Texts.error),
+                dismissButton: .destructive(Text(Texts.done))
+            )
+        }
+    }
+    
+    private func openPlace() {
+        if let lat = Double(latitude),
+            let long = Double(longitude),
+            PlaceLocationValidator.isValidLatitude(latitude),
+            PlaceLocationValidator.isValidLongitude(longitude) {
+            onDidEnterPlace(Place(name: name, latitude: Double(lat), longitude: Double(long)))
+            presentationMode.wrappedValue.dismiss()
+        } else {
+            showError = true
         }
     }
 }
@@ -58,6 +114,9 @@ extension CustomPlaceView {
         static let navigationTitle = "Custom Place"
         static let cancel = "Cancel"
         static let openWiki = "Open in Wikipedia"
+        static let done = "Done"
+        static let errorTitle = "Attention"
+        static let error = "Check your coordinates"
     }
     
     private enum Accessibility {
@@ -71,5 +130,8 @@ extension CustomPlaceView {
         static let openWikiHint = "Tap to open the custom place in Wikipedia"
         static let cancelLabel = "Cancel"
         static let cancelHint = "Tap to dismiss the custom place view"
+        static let doneLabel = "Done"
+        static let doneHint = "Tap to dismiss the keyboard"
+        static let errorLabel = "Error"
     }
 }
