@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A467D1DD2CAC253000141A7A /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = A467D1DC2CAC253000141A7A /* Network */; };
 		A467D20E2CAC25DB00141A7A /* Search in Frameworks */ = {isa = PBXBuildFile; productRef = A467D20D2CAC25DB00141A7A /* Search */; };
 /* End PBXBuildFile section */
 
@@ -48,7 +47,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A467D20E2CAC25DB00141A7A /* Search in Frameworks */,
-				A467D1DD2CAC253000141A7A /* Network in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,7 +105,6 @@
 			);
 			name = Places;
 			packageProductDependencies = (
-				A467D1DC2CAC253000141A7A /* Network */,
 				A467D20D2CAC25DB00141A7A /* Search */,
 			);
 			productName = Places;
@@ -187,7 +184,6 @@
 			mainGroup = A467D16D2CAC0F3A00141A7A;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				A467D1DB2CAC253000141A7A /* XCRemoteSwiftPackageReference "WikiNetwork" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A467D1772CAC0F3A00141A7A /* Products */;
@@ -578,23 +574,7 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		A467D1DB2CAC253000141A7A /* XCRemoteSwiftPackageReference "WikiNetwork" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/paulosytac/WikiNetwork";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		A467D1DC2CAC253000141A7A /* Network */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A467D1DB2CAC253000141A7A /* XCRemoteSwiftPackageReference "WikiNetwork" */;
-			productName = Network;
-		};
 		A467D20D2CAC25DB00141A7A /* Search */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Search;

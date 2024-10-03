@@ -7,7 +7,7 @@
       "location" : "https://github.com/paulosytac/WikiDeeplink",
       "state" : {
         "branch" : "main",
-        "revision" : "c27392f675baf1658e94bbb4ccd38324ea7a7d8e"
+        "revision" : "57e63a52bfccd4548e30536039a8a1d578714bc3"
       }
     },
     {
@@ -16,7 +16,7 @@
       "location" : "https://github.com/paulosytac/WikiNetwork",
       "state" : {
         "branch" : "main",
-        "revision" : "4b322200aae4c41ef7e3a597351dedc835ddeeef"
+        "revision" : "25dc26a5be30b6c550f979fdeb93f67688b47431"
       }
     },
     {
