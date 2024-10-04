@@ -106,7 +106,13 @@ struct CustomPlaceView: View {
             let long = Double(longitude),
             PlaceLocationValidator.isValidLatitude(latitude),
             PlaceLocationValidator.isValidLongitude(longitude) {
-            onDidEnterPlace(Place(name: name, latitude: Double(lat), longitude: Double(long)))
+            onDidEnterPlace(
+                Place(
+                    name: name,
+                    latitude: lat,
+                    longitude: long
+                )
+            )
             presentationMode.wrappedValue.dismiss()
         } else {
             showError = true
