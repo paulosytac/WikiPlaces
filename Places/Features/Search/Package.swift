@@ -13,6 +13,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/paulosytac/WikiDeeplink", branch: "main"),
+        .package(url: "https://github.com/paulosytac/WikiDependencyContainer", branch: "main"),
         .package(url: "https://github.com/paulosytac/WikiNetwork", branch: "main"),
         .package(url: "https://github.com/paulosytac/WikiValidator", branch: "main"),
         
@@ -22,6 +23,7 @@ let package = Package(
             name: "Search",
             dependencies: [
                 .product(name: "Deeplink", package: "WikiDeeplink"),
+                .product(name: "DependencyContainer", package: "WikiDependencyContainer"),
                 .product(name: "Network", package: "WikiNetwork"),
                 .product(name: "Validator", package: "WikiValidator"),
             ]

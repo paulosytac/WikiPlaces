@@ -60,11 +60,19 @@ struct CustomPlaceView: View {
                             .accessibilityLabel(Accessibility.doneLabel)
                             .accessibilityHint(Accessibility.doneHint)
                     }
+                    .accessibilityAction {
+                        nameFocused = false
+                        latitudeFocused = false
+                        longitudeFocused = false
+                    }
                   }
                 }
 
                 Button(action: openPlace) {
                     Text(Texts.openWiki)
+                }
+                .accessibilityAction {
+                    openPlace()
                 }
                 .font(.headline)
                 .buttonStyle(.borderedProminent)

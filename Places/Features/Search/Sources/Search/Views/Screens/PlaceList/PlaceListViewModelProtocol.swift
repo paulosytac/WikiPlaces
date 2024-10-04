@@ -7,13 +7,14 @@
 
 import Foundation
 
-enum PlaceListViewState: Equatable {
+public enum PlaceListViewState: Equatable {
     case loading
     case loaded([Place])
     case error(String)
 }
 
-protocol PlaceListViewModelProtocol {
+@MainActor
+public protocol PlaceListViewModelProtocol {
     var state: PlaceListViewState { get }
     
     func requestPlaces() async

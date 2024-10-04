@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A456504E2CB0393B0054A3FD /* DependencyContainer in Frameworks */ = {isa = PBXBuildFile; productRef = A456504D2CB0393B0054A3FD /* DependencyContainer */; };
 		A467D20E2CAC25DB00141A7A /* Search in Frameworks */ = {isa = PBXBuildFile; productRef = A467D20D2CAC25DB00141A7A /* Search */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A467D20E2CAC25DB00141A7A /* Search in Frameworks */,
+				A456504E2CB0393B0054A3FD /* DependencyContainer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +108,7 @@
 			name = Places;
 			packageProductDependencies = (
 				A467D20D2CAC25DB00141A7A /* Search */,
+				A456504D2CB0393B0054A3FD /* DependencyContainer */,
 			);
 			productName = Places;
 			productReference = A467D1762CAC0F3A00141A7A /* Places.app */;
@@ -184,6 +187,7 @@
 			mainGroup = A467D16D2CAC0F3A00141A7A;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
+				A456504C2CB0393B0054A3FD /* XCRemoteSwiftPackageReference "WikiDependencyContainer" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A467D1772CAC0F3A00141A7A /* Products */;
@@ -574,7 +578,23 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		A456504C2CB0393B0054A3FD /* XCRemoteSwiftPackageReference "WikiDependencyContainer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/paulosytac/WikiDependencyContainer";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		A456504D2CB0393B0054A3FD /* DependencyContainer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A456504C2CB0393B0054A3FD /* XCRemoteSwiftPackageReference "WikiDependencyContainer" */;
+			productName = DependencyContainer;
+		};
 		A467D20D2CAC25DB00141A7A /* Search */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Search;

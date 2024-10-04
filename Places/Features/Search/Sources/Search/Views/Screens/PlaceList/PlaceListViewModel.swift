@@ -7,23 +7,21 @@
 
 import protocol Deeplink.DeeplinkProtocol
 import enum Deeplink.DeeplinkType
+import DependencyContainer
 import Foundation
 
 @Observable
-public final class PlaceListViewModel: PlaceListViewModelProtocol {    
-    var state: PlaceListViewState = .loading
+public final class PlaceListViewModel: PlaceListViewModelProtocol {
+    @ObservationIgnored @Injected var deeplink: DeeplinkProtocol
+    @ObservationIgnored @Injected var repository: SearchRepositoryProtocol
     private var places: [Place] = []
     private var placeFiltered: [Place] = []
-    private let repository: SearchRepositoryProtocol
-    private let deeplink: DeeplinkProtocol
+    public var state: PlaceListViewState = .loading
     
-    public init(repository: SearchRepositoryProtocol, deeplink: DeeplinkProtocol) {
-        self.repository = repository
-        self.deeplink = deeplink
-    }
-    
+    public init() {}
+
     @MainActor
-    func requestPlaces() async {
+    public func requestPlaces() async {
         state = .loading
         
         do {
@@ -35,7 +33,7 @@ public final class PlaceListViewModel: PlaceListViewModelProtocol {
     }
     
     @MainActor
-    func searchPlaces(_ searchQuery: String) async {
+    public func searchPlaces(_ searchQuery: String) async {
         if searchQuery.isEmpty {
             placeFiltered = places
         } else {
@@ -52,7 +50,7 @@ public final class PlaceListViewModel: PlaceListViewModelProtocol {
     }
     
     @MainActor
-    func openPlace(_ place: Place) async {
+    public func openPlace(_ place: Place) async {
         let latitudeQueryItem = URLQueryItem(name: DeeplinkKeys.latitude, value: "\(place.latitude)")
         let longitudeQueryItem = URLQueryItem(name: DeeplinkKeys.longitude, value: "\(place.longitude)")
         let nameQueryItem = URLQueryItem(name: DeeplinkKeys.name, value: "\(place.name)")

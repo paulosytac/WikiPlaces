@@ -5,11 +5,12 @@
 //  Created by Paulo Correa on 29/09/2024.
 //
 
+import DependencyContainer
 import SwiftUI
 
 public struct PlaceListView: View {
-    @Environment(PlaceListViewModel.self) private var viewModel
-    @State var searchQuery = ""
+    @Injected var viewModel: PlaceListViewModelProtocol
+    @State private var searchQuery = ""
     @State private var isShowingCustomPlaceView = false
     
     public init() {}
@@ -25,6 +26,9 @@ public struct PlaceListView: View {
                 showError(error: error)
             }
         }
+        .onAppear {
+            requestPlaces()
+        }
     }
 }
 
@@ -34,9 +38,6 @@ extension PlaceListView {
         ProgressView()
             .progressViewStyle(.circular)
             .scaleEffect(5.0, anchor: .center)
-            .onAppear {
-                requestPlaces()
-            }
             .accessibilityLabel(Accessibility.loadingLabel)
     }
     

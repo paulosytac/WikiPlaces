@@ -5,28 +5,20 @@
 //  Created by Paulo Correa on 27/09/2024.
 //
 
-import class Deeplink.Deeplink
-import SwiftUI
-import class Search.PlaceListViewModel
 import struct Search.PlaceListView
-import class Search.SearchRepository
-import class Network.Network
+import SwiftUI
 
 @main
 struct PlacesApp: App {
-    @State private var placeListViewModel = PlaceListViewModel(
-        repository: SearchRepository(
-            network: Network()
-        ),
-        deeplink: Deeplink(
-            deeplinkOpener: UIApplication.shared
-        )
-    )
+    init() {
+        registerServices()
+    }
     
     var body: some Scene {
         WindowGroup {
             PlaceListView()
-                .environment(placeListViewModel)
         }
     }
 }
+
+

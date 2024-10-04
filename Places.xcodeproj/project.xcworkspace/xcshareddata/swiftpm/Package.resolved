@@ -1,5 +1,5 @@
 {
-  "originHash" : "8776b1dd286a9e6f1384105446627f8dbed8790f1c11684ae8385525d9449ca2",
+  "originHash" : "57f0d7e947ddd7e3894848e2db6eff4e66863173a5b0b877ee4b1ccee211edc3",
   "pins" : [
     {
       "identity" : "wikideeplink",
@@ -8,6 +8,15 @@
       "state" : {
         "branch" : "main",
         "revision" : "57e63a52bfccd4548e30536039a8a1d578714bc3"
+      }
+    },
+    {
+      "identity" : "wikidependencycontainer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/paulosytac/WikiDependencyContainer",
+      "state" : {
+        "branch" : "main",
+        "revision" : "1724cb5bd6f32234a29eb99c54986672172fca31"
       }
     },
     {
