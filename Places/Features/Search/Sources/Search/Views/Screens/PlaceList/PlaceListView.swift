@@ -49,6 +49,9 @@ extension PlaceListView {
             Button(Texts.retry) {
                 requestPlaces()
             }
+            .accessibilityAction {
+                requestPlaces()
+            }
             .accessibilityLabel(Accessibility.retryLabel)
             .accessibilityValue(Accessibility.retryValue)
         }
@@ -83,6 +86,9 @@ extension PlaceListView {
             .navigationTitle(Texts.navigationTitle)
 
             Button(Texts.customPlace) {
+                isShowingCustomPlaceView.toggle()
+            }
+            .accessibilityAction {
                 isShowingCustomPlaceView.toggle()
             }
             .font(.headline)
