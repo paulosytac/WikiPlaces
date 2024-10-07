@@ -39,7 +39,12 @@ struct EmptyDataView: ViewModifier {
 
 extension View {
     func onEmpty(for condition: Bool, with message: String) -> some View {
-        self.modifier(EmptyDataView(condition: condition, message: message))
+        self.modifier(
+            EmptyDataView(
+                condition: condition,
+                message: message
+            )
+        )
     }
 }
 

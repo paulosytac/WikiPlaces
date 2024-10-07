@@ -1,5 +1,4 @@
 import Foundation
-import class Deeplink.Deeplink
 import protocol Deeplink.DeeplinkProtocol
 import class Deeplink.Deeplink
 import DependencyContainer
@@ -66,18 +65,14 @@ final class SearchTests {
     func openPlaceData() async {
         //Given
         let place = placeQuery().first!
-        let expectedQueryItems = [
-            URLQueryItem(name: "lat", value: "30.0368"),
-            URLQueryItem(name: "long", value: "51.209"),
-            URLQueryItem(name: "name", value: "Porto Alegre")
-        ]
+        let queryItems = placeQueryItems()
         let deeplink = DependencyContainer.resolve(DeeplinkProtocol.self) as! DeeplinkFake
         
         //When
         await sut.openPlace(place)
         
         //Then
-        #expect(deeplink.queryItems == expectedQueryItems)
+        #expect(deeplink.queryItems == queryItems)
         #expect(deeplink.type == .places)
     }
     

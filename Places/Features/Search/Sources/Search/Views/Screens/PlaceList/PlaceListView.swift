@@ -9,7 +9,7 @@ import DependencyContainer
 import SwiftUI
 
 public struct PlaceListView: View {
-    @Injected var viewModel: PlaceListViewModelProtocol
+    @Injected private var viewModel: PlaceListViewModelProtocol
     @State private var searchQuery = ""
     @State private var isShowingCustomPlaceView = false
     

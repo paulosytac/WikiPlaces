@@ -88,6 +88,9 @@ struct CustomPlaceView: View {
                 Button(Texts.cancel) {
                     presentationMode.wrappedValue.dismiss()
                 }
+                .accessibilityAction {
+                    presentationMode.wrappedValue.dismiss()
+                }
                 .accessibilityLabel(Accessibility.cancelLabel)
                 .accessibilityHint(Accessibility.cancelHint)
             })

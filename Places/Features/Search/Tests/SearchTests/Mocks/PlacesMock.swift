@@ -21,3 +21,11 @@ public func placeQuery() -> [Place] {
         Place(id: UUID(uuidString: "8B637283-1836-4998-9A3A-8253C65C24D9")!, name: "Porto Alegre", latitude: 30.0368, longitude: 51.2090)
     ]
 }
+
+public func placeQueryItems() -> [URLQueryItem] {
+    [
+        URLQueryItem(name: "lat", value: "30.0368"),
+        URLQueryItem(name: "long", value: "51.209"),
+        URLQueryItem(name: "name", value: "Porto Alegre")
+    ]
+}
